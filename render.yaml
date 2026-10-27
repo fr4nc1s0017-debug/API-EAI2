@@ -1,0 +1,18 @@
+# API Node.js independientemente desplegable en Render.
+services:
+  - type: web
+    name: api-eai
+    runtime: node
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_VERSION
+        value: 22
+      - key: DEVICE_API_KEY
+        sync: false
+      - key: ADMIN_API_KEY
+        sync: false
+      - key: DATA_FILE
+        value: ./data/estado.json
+      # Configura CORS_ORIGINS una vez obtengas el dominio HTTPS de la WEB.
